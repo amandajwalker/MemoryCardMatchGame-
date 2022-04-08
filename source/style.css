@@ -1,0 +1,212 @@
+/* MISC */
+
+font-family{
+font-family: 'Grape Nuts', serif, cursive;
+font-family: 'Rock 3D', serif, cursive;
+}
+
+* {
+    box-sizing: border-box;
+  }
+
+
+  a:link { text-decoration: rgb(255,126,95,.7); }
+  a:visited { text-decoration:rgb(255,126,95,.7) }
+  a:hover { text-decoration: rgb(255,126,95,.7); }
+  a:active { text-decoration: rgb(255,126,95,.7); }
+
+
+  html {
+    min-height: 100vh;
+  }
+
+
+  body {
+    margin: 0;
+    background: linear-gradient(to top, #fcb69f, #fcc4a8, #fdd2b4, #fddfc2, #ffecd2);
+  }
+  
+  /* linear-gradient(to left bottom, #fdab72, #f7a07c, #ed9785, #df908c,
+     #cf8a91, #cf8a92, #ce8b92, #ce8b93, #de9191, #ec998c, #f7a286, #ffad80); */
+
+
+  /* radial-gradient(#ff7e5f, #feb47b);   */
+
+  .page-title {
+    color: rgb(255,126,95,.7);
+    font-family: 'Rock 3D', serif; 
+    font-weight: 600;
+    text-align: center;
+    font-size: 4.5em;
+  }
+
+/* 
+  GAME INFO  */
+
+
+  .game-info {
+    font-family: Grape Nuts, serif;
+    color: rgb(255,126,95,.7);
+    font-size: 2em;
+    margin-bottom: 20px;
+   
+  }
+
+  .game-info-box {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+
+/* BOARD  */
+
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    margin: 70px;
+    justify-content: center;
+    perspective: 500px;
+  }
+  
+
+  /* CARDS */
+
+  .card {
+    position: relative;
+    height: 175px;
+    width: 175px;
+  }
+    
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    border-color: #FFBB89;
+    border-width: 3px;
+    border-style: solid;
+    transition: transform 500ms ease-in-out;
+  }
+  
+  
+  .card-back {
+    background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    border-color:rgb(255,126,95,.7);
+    border-width: 2px;
+  }
+  
+  .card-front {
+    background-color: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    border-color: #FFBB89;
+    border-width: 1px;
+    transform: rotateY(180deg);
+  }
+  
+  .card-value {
+    transition: transform 100ms ease-in-out;
+    transform: scale(.12);
+  }
+
+
+  .card.visible .card-back {
+    transform: rotateY(-180deg);
+  }
+  
+  .card.visible .card-front {
+    transform: rotateY(0)
+  }
+  
+  .card.matched .card-value {
+    animation: dance 1s linear 300ms;
+  }
+
+  
+  .card-front:hover .card-value {
+    transform: scale(1);
+  }
+
+  .card-back:hover .dog {
+    transform: translateY(0) 
+    }
+  
+  .good-karma {
+    position: absolute;
+    width: 115px;
+    height: 115px;
+    transition: width 100ms ease-in-out, height 100ms ease-in-out;
+  }
+
+  .dog {
+    align-self: center;
+    transform: translateY(-1px);
+    transition: transform 100ms ease-in-out;
+  }
+  
+  
+  .card-face:hover .good-karma {
+    width: 60px;
+    height: 60px;
+  }
+  
+ /* TEXT */
+
+  .overlay-text {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: rgb(255,126,95,.7);
+    font-family: 'Rock 3D', 'Grape Nuts';
+    font-size: 12px;
+  } 
+  
+  span .overlay-text-small {
+    font-size: .1em;
+    font: 'Grape Nuts', serif;
+  } 
+  
+  .overlay-text.visible {
+    display: flex;
+    flex-direction: column;
+    animation: overlay-grow 500ms forwards;
+  }
+  
+   @keyframes overlay-grow {
+    from {
+      background-color: rgba(0, 0, 0, 0);
+      font-size: 0;
+    }
+    to {
+      background-color: rgba(0, 0, 0, .8);
+      font-size: 4em;
+    }
+  } 
+  
+  @keyframes dance {
+    0%, 100%  {
+      transform: rotate(0);
+    }
+    25% {
+      transform: rotate(-2deg);
+    }
+    75% {
+      transform: rotate(2deg);
+    }
+  } 
+  
+  
+  
